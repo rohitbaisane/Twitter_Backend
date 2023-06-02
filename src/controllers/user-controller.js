@@ -1,4 +1,4 @@
-const { UserService } = require("./user-service");
+const { UserService } = require("../services/index");
 
 const userService = new UserService();
 
@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const data = req.body.data;
-  const userId = req.body.id;
+  const userId = req.params.id;
   const userRecord = await userService.updateUser(userId, data);
   return res.status(201).json({
     success: true,
